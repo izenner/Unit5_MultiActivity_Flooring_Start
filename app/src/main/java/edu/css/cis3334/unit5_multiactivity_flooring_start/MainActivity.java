@@ -6,14 +6,26 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity {
+
+    EditText etWidth;
+    EditText etLength;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        etWidth = (EditText) findViewById(R.id.etWidth);
+        etLength = (EditText) findViewById(R.id.etLength);
+        double width = Double.parseDouble(etWidth.getText().toString());
+        double length = Double.parseDouble(etLength.getText().toString());
+        double total = width * length;
+
     }
 
 
@@ -21,6 +33,8 @@ public class MainActivity extends ActionBarActivity {
         // declare an intent for our new activity
         Intent i = new Intent(this, ResultsActivity2.class);
         startActivity(i);       // display new activity
+        i.putExtra(EXTRA_MESSAGE, message);
+
     }
 
     @Override
