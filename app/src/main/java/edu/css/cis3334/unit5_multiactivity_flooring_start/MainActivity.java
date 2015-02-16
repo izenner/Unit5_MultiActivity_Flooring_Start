@@ -25,16 +25,19 @@ public class MainActivity extends ActionBarActivity {
         double width = Double.parseDouble(etWidth.getText().toString());
         double length = Double.parseDouble(etLength.getText().toString());
         double total = width * length;
-
+        String total1  = String.valueOf(total);
     }
 
 
     public void onClick(View v) {
         // declare an intent for our new activity
         Intent i = new Intent(this, ResultsActivity2.class);
-        startActivity(i);       // display new activity
-        i.putExtra(EXTRA_MESSAGE, message);
-
+        Bundle b = new Bundle();
+        b.putDouble("Key", doubleVal);
+        i.setAction(Intent.ACTION_SEND);
+        i.putExtra("width", Double.parseDouble(etWidth.getText().toString()));
+        i.putExtra("length", Double.parseDouble(etLength.getText().toString()));
+        startActivity(i);
     }
 
     @Override
