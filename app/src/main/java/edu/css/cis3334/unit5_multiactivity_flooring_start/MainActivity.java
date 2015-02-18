@@ -7,7 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
+
 
 
 public class MainActivity extends ActionBarActivity {
@@ -22,21 +22,22 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         etWidth = (EditText) findViewById(R.id.etWidth);
         etLength = (EditText) findViewById(R.id.etLength);
-        double width = Double.parseDouble(etWidth.getText().toString());
-        double length = Double.parseDouble(etLength.getText().toString());
-        double total = width * length;
-        String total1  = String.valueOf(total);
+
     }
 
 
     public void onClick(View v) {
         // declare an intent for our new activity
+        double width = Double.parseDouble(etWidth.getText().toString());
+        double length = Double.parseDouble(etLength.getText().toString());
+        double total = width * length;
+        String width1 = String.valueOf(width);
+        String length1 = String.valueOf(length);
+        String total1  = String.valueOf(total);
         Intent i = new Intent(this, ResultsActivity2.class);
-        Bundle b = new Bundle();
-        b.putDouble("Key", doubleVal);
-        i.setAction(Intent.ACTION_SEND);
-        i.putExtra("width", Double.parseDouble(etWidth.getText().toString()));
-        i.putExtra("length", Double.parseDouble(etLength.getText().toString()));
+        i.putExtra("width", width1);
+        i.putExtra("length", length1);
+        i.putExtra("total1", total1);
         startActivity(i);
     }
 
